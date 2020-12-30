@@ -33,8 +33,7 @@ export default {
                lyricLi[i - 1].style.color = "white"
                lyricLi[i - 1].style.fontSize = "17px"
                lyricLi[i - 1].style.fontWeight = "700"
-            }
-            
+            } 
         }
     }
 }
