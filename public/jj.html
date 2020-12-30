@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function shijianc() {
+            var date = new Date(1607056647232)
+                // console.log(date)
+            var Y = date.getFullYear() + '-'
+            var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-'
+            var D = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + ' '
+            var h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':'
+            var m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':'
+            var s = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds())
+            return Y + M + D + h + m + s
+
+        }
+        var a = shijianc()
+        console.log(a)
+    </script>
+</body>
+
+</html>
