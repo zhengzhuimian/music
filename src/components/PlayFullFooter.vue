@@ -39,7 +39,7 @@
       <!-- 播放暂停 -->
       <div class="arrowsIcon arrowsMiddle" @click.stop="$emit('toggle-icon')">
         <span style="background-position: 0 0" v-if="paused"> </span>
-        <span style="background-position: 0 -59px" v-else> </span>
+        <span style="background-position: 0 -60px" v-else> </span>
       </div>
       <!-- 右箭头 -->
       <div class="arrowsIcon arrowsRight" @click="$emit('update:next-song')">

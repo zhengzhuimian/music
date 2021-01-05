@@ -1,6 +1,6 @@
 <template>
-  <div @click="$emit('show-play-bar')" class="header">
-    <div class="triangle"></div>
+  <div  class="header">
+    <div class="triangle" @click="$emit('show-play-bar')"></div>
     <span v-if="currentMusic.al">{{ currentMusic.al.name }}</span>
     <span v-else>{{ currentMusic.name }}</span>
   </div>

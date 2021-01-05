@@ -29,7 +29,7 @@ export default {
                     lyricLi[i - 1].style.fontSize = "14px"
                     lyricLi[i - 1].style.fontWeight = ""
                 }
-                document.querySelector(".lyric").style.marginTop = -30 * (i - 1) + 90 + "px"
+                document.querySelector(".lyric").style.marginTop = -30 * (i - 1) + 220 + "px"
                lyricLi[i - 1].style.color = "white"
                lyricLi[i - 1].style.fontSize = "17px"
                lyricLi[i - 1].style.fontWeight = "700"

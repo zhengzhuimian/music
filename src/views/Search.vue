@@ -107,7 +107,7 @@ export default {
       this.inputing = false;
 
       // 添加历史记录
-      this.history.push(n);
+      this.history.unshift(n);
 
       window.localStorage.setItem("history", this.history);
     },
@@ -130,8 +130,8 @@ export default {
        this.axios
             .get("http://music.kele8.cn/search?keywords=" + n)
             .then((res) => {
-              console.log(res.data.result.songs)
-              console.log(this.Realtime)
+              // console.log(res.data.result.songs)
+              // console.log(this.Realtime)
               this.SearchSong = res.data.result.songs.slice(0, 6);
             });
     },

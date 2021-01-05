@@ -6,7 +6,6 @@
         currentMusic.id +
         '.mp3'
       "
-      loop
       autoplay
       ref="audio"
       style="width: 100%; height: 40px"
@@ -212,7 +211,7 @@ export default {
           0
         );
         return nextIndex;
-      } else {
+      } else if (this.schema == 3) {
         // console.log(this.currentIndex)
         nextIndex = this.currentIndex;
         this.$refs.audio.currentTime = 0;
@@ -220,7 +219,9 @@ export default {
       }
     },
     playNext: function () {
+      console.log("111");
       let ni = this.calculateNext();
+
       this.$emit("update:music", {
         item: this.playlist[ni],
         index: ni,
@@ -239,6 +240,10 @@ export default {
       } else if (this.schema == 2) {
         // 随机播放
         pre = this.getRamdon(this.currentIndex, this.playlist.length - 1, 0);
+      } else {
+        // console.log(this.currentIndex)
+        pre = this.currentIndex;
+        this.$refs.audio.currentTime = 0;
       }
 
       this.$emit("update:music", {
@@ -277,7 +282,6 @@ export default {
       // 请求歌词
       this.axios.get("http://music.kele8.cn/lyric?id=" + n.id).then((res) => {
         if (res.data.lrc) {
-          
           this.lyric = this.paresLyric(res.data.lrc.lyric);
         }
       });
