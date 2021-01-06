@@ -118,7 +118,7 @@ export default {
             this.wonderful = res.data.hotComments;
             // console.log(res.data.hotComments);
           });
-        console.log(n);
+        // console.log(n);
       }
     },
   },
