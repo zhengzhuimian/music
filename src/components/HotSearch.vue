@@ -35,9 +35,9 @@ export default {
         padding: 0 14px;
         font-size: 14px;
         line-height: 32px;
-        color: #333;
-        border: 1px solid #d3d4da;
-color: #333;
+        color: #282828;
+    border: 1px solid #ffe300;
+
         border-radius: 32px;
       }
     }

@@ -90,7 +90,7 @@ li.song-item {
       i {
         width: 5px;
         height: 29px;
-        background-color: #e6e6e6;
+        background-color: #ffe300;
         display: inline-block;
         transform-origin: center bottom;
         animation: playing 0.6s linear -0.2s infinite alternate-reverse;

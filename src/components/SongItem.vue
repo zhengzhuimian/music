@@ -1,5 +1,4 @@
 <template>
-
   <li
     class="song-item"
     @click="
@@ -15,6 +14,7 @@
           <template v-if="index"> / </template>
           {{ artist.name }}
         </span>
+        <!-- <span> {{ itemSong.artists[0].name }}</span> -->
         &nbsp;-&nbsp;{{ item.name }}
       </p>
     </div>
@@ -31,7 +31,6 @@
       <span v-else class="play"></span>
     </div>
   </li>
- 
 </template>
 
 <script>
@@ -45,7 +44,6 @@ export default {
 </script>
 
 <style scoped lang="less">
-
 li.song-item {
   display: flex;
   font-size: 12px;
@@ -61,13 +59,13 @@ li.song-item {
   }
   .info {
     flex: 1;
-   width: 0;
+    width: 0;
     p {
       color: #aaaaaa;
-       white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    margin-top: 4px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      margin-top: 4px;
       i {
         background: url("https://s3.music.126.net/mobile-new/img/index_icon_3x.png?49a82fee3e0fc602e9c8b25df2bda159=")
           no-repeat;
@@ -93,7 +91,7 @@ li.song-item {
       i {
         width: 5px;
         height: 29px;
-        background-color: #e6e6e6;
+        background-color: #ffe300;
         display: inline-block;
         transform-origin: center bottom;
         animation: playing 0.6s linear -0.2s infinite alternate-reverse;

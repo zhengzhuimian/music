@@ -36,16 +36,14 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
 li.playlistitem {
-  flex: 1 1 30vw;
-  &:nth-of-type(3n+2){
-    margin: 0 5px;
-  }
+  width: 33%;
+  // height: 174px;
   .thumb {
     position: relative;
     img {
-      // min-height: 33.33vw;
+  
       vertical-align: middle;
     }
     span {
@@ -72,7 +70,7 @@ li.playlistitem {
     -webkit-line-clamp:2;
     overflow: hidden;
     padding: 3px;
-    margin-bottom: 10px;
+    // margin-bottom: 6px;
   }
 }
 </style>

@@ -4,7 +4,7 @@
     <div class="hot">
       <div class="hot-box">
         <div class="hoticon"></div>
-        <div class="hottime">{{current}}</div>
+        <div class="hottime">{{ current }}</div>
       </div>
     </div>
 
@@ -17,36 +17,43 @@
         :currentMusic="currentMusic"
         :paused="paused"
         @update:hotmusic="$emit('update:hotmusic', $event)"
-        @update:playlist="$emit('update:playlist',recommedns)"
+        @update:playlist="$emit('update:playlist', recommedns)"
       ></HotList>
     </ul>
-     <div class="OpenApp">打开APP，发现更多好音乐 ></div>
+    <div class="view" v-if="accomplish">
+      <div @click="view" v-if="examine">查看更多</div>
+      <div v-else-if="!examine">加载中...</div>
+    </div>
+    <div class="view" v-else>
+      <div>已加载全部</div>
+    </div>
+    <div class="OpenApp">打开APP，发现更多好音乐 ></div>
   </div>
 </template>
 <script>
 import HotList from "@/components/HotList.vue";
 
 export default {
-  props: ["currentMusic","paused"],
+  props: ["currentMusic", "paused"],
   data: function () {
     return {
       recommedns: [],
       // 当前日期
-      current:"",
+      current: "",
+      // 加载页数
+      num: 1,
+      examine: true,
+      // 加载全部
+      accomplish: true,
     };
   },
   components: {
     HotList,
   },
-  computed: {
-    // currentRecommends:function(){
-    //   return t
-    // }
-  },
+  computed: {},
   created() {
-    this.$root.isShowLoading = true
+    this.$root.isShowLoading = true;
     this.axios.get("http://music.kele8.cn/top/list?idx=1").then((res) => {
-     
       this.axios
         .get(
           "http://music.kele8.cn/song/detail?ids=" +
@@ -57,15 +64,45 @@ export default {
         )
         .then((res) => {
           this.recommedns = res.data.songs;
-        }).finally(()=>{
-            this.$root.isShowLoading = false
+        })
+        .finally(() => {
+          this.$root.isShowLoading = false;
         });
     });
 
     // 获取当前月份，日数
     let getMonth = new Date().getMonth() + 1;
-    let getDate = new Date().getDate()
+    let getDate = new Date().getDate();
     this.current = "更新日期:" + getMonth + "月" + getDate + "日";
+  },
+  methods: {
+    view: function () {
+      this.examine = false;
+      this.num++;
+      if (this.num < 4) {
+        this.axios.get("http://music.kele8.cn/top/list?idx=1").then((res) => {
+          // console.log(res.data.playlist.trackIds);
+          this.axios
+            .get(
+              "http://music.kele8.cn/song/detail?ids=" +
+                res.data.playlist.trackIds
+                  .slice(0, this.num * 20)
+                  .map((e) => e.id)
+                  .join()
+            )
+            .then((res) => {
+              this.recommedns = res.data.songs;
+            })
+            .finally(() => {
+              this.examine = true;
+               if (this.num == 3) {
+        this.accomplish = false;
+      }
+            });
+        });
+      }
+     
+    },
   },
 };
 </script>
@@ -91,13 +128,18 @@ export default {
       font-size: 12px;
     }
   }
-  .OpenApp{
+  .OpenApp {
     line-height: 38px;
     border: 1px solid #d33a31;
     border-radius: 38px;
     font-size: 16px;
     color: #d33a31;
     margin: 15px 37px 5px;
+    text-align: center;
+  }
+  .view {
+    color: #aaaaaa;
+    padding-top: 10px;
     text-align: center;
   }
 }

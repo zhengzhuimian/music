@@ -36,7 +36,24 @@
           <span v-if="currentMusic.al">{{ currentMusic.al.name }}</span>
           <span v-else>{{ currentMusic.name }}</span>
         </div>
-
+        <div class="collect" @click.stop="collect">
+          <svg
+            t="1610335276459"
+            class="icon"
+            viewBox="0 0 1139 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            p-id="1980"
+            width="32"
+            height="32"
+          >
+            <path
+              d="M889.018182 193.163636c-41.890909-46.545455-97.745455-69.818182-162.909091-69.818181-48.872727 0-97.745455 16.290909-144.290909 46.545454-11.636364 6.981818-13.963636 20.945455-6.981818 32.581818 6.981818 11.636364 20.945455 13.963636 32.581818 6.981818 37.236364-25.6 76.8-39.563636 118.690909-39.563636 51.2 0 95.418182 18.618182 128 55.854546 39.563636 44.218182 58.181818 109.381818 51.2 179.2-9.309091 104.727273-74.472727 302.545455-393.309091 446.836363C193.163636 707.490909 128 509.672727 118.690909 404.945455c-6.981818-69.818182 11.636364-134.981818 51.2-179.2 32.581818-34.909091 76.8-55.854545 128-55.854546 116.363636 0 195.490909 114.036364 195.490909 116.363636 6.981818 11.636364 20.945455 13.963636 32.581818 6.981819 11.636364-6.981818 13.963636-20.945455 6.981819-32.581819-4.654545-4.654545-93.090909-137.309091-235.054546-137.30909-65.163636 0-121.018182 23.272727-162.909091 69.818181-48.872727 53.527273-72.145455 132.654545-62.836363 214.109091 11.636364 116.363636 81.454545 335.127273 430.545454 488.727273 2.327273 2.327273 6.981818 2.327273 9.309091 2.327273 4.654545 0 6.981818 0 9.309091-2.327273 349.090909-153.6 418.909091-372.363636 430.545454-488.727273 9.309091-81.454545-13.963636-160.581818-62.836363-214.109091z"
+              fill="#707070"
+              p-id="1981"
+            ></path>
+          </svg>
+        </div>
         <div class="control" @click.stop="togglePlayState">
           <canvas ref="circle" width="40" height="40"></canvas>
           <span class="icon"></span>
@@ -46,7 +63,7 @@
 
     <transition
       name="custom-classes-transition"
-      enter-active-class="animate__animated animate__wobble"
+      enter-active-class="animate__animated animate__fadeInUpBig"
       leave-active-class="animate__animated animate__backOutDown"
     >
       <div class="play-full" v-if="!isShowPlayBar">
@@ -121,9 +138,13 @@ export default {
       lyric: [],
       // 播放模式
       schema: 1,
+      // 收藏
+      collectSong: [],
     };
   },
-
+  created() {
+    this.collectSong.push(window.localStorage.getItem("collectSong"));
+  },
   mounted() {
     this.$refs.audio.addEventListener("pause", () => {
       this.paused = true;
@@ -162,7 +183,7 @@ export default {
       ctx.closePath();
 
       ctx.beginPath();
-      ctx.strokeStyle = "rgba(255, 0, 0, 0.6)";
+      ctx.strokeStyle = "#ffe300";
       ctx.arc(
         20,
         20,
@@ -219,7 +240,6 @@ export default {
       }
     },
     playNext: function () {
-      console.log("111");
       let ni = this.calculateNext();
 
       this.$emit("update:music", {
@@ -271,6 +291,12 @@ export default {
           };
         });
       return arr;
+    },
+    // 收藏
+    collect: function () {
+      // this.collectSong.push(JSON.stringify({id:this.currentMusic.id,name:this.currentMusic.name,picUrl:this.currentMusic.picUrl,al:{name:"111"}}) + "!");
+      this.collectSong.push(JSON.stringify(this.currentMusic) + "!");
+      window.localStorage.setItem("collectSong", this.collectSong);
     },
   },
 
@@ -345,6 +371,14 @@ export default {
         content: "暂停";
         font-size: 12px;
       }
+    }
+  }
+  .collect {
+    height: 48px;
+    svg {
+      width: 32px;
+      height: 32px;
+      margin-top: 7px;
     }
   }
 }

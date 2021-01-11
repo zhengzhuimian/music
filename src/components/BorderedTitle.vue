@@ -12,9 +12,9 @@ export default {
 <style scoped lang="less">
 // secoped 当前作用域有效
 h3{
-    border-left: 1px solid red;
+    border-left: 2px solid #ffe300;
     padding-left: 10px;
     line-height: 1em;
-    margin: 15px 0 ;
+    margin: 10px 0 ;
 }
 </style>

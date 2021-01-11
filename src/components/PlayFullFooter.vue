@@ -11,8 +11,8 @@
       />
       <span :style="{ width: (currentTime / duration) * 100 + '%' }"></span>
     </div>
-    <div class="calculatorLeft">{{ present }}</div>
-    <div class="calculatorRight">{{ total }}</div>
+    <div class="calculatorLeft" v-if="present">{{ present }}</div>
+    <div class="calculatorRight"  v-if="present">{{ total }}</div>
     <div class="arrows">
       <!-- 模式按钮 -->
       <div class="schema">
@@ -60,7 +60,7 @@ export default {
       // 歌曲的总时长
       total: 0,
       // 当前歌曲时间
-      present: 0,
+      present: "00:00:00",
     };
   },
   methods: {
@@ -159,7 +159,7 @@ export default {
       height: 100%;
       background: black;
       border-radius: 3px;
-      background: #ec4141;
+      background: #d8cc6b;
     }
   }
   // 底下箭头部分

@@ -25,9 +25,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .playlist{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 </style>

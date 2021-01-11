@@ -1,5 +1,6 @@
 <template>
   <div class="PlayList" v-if="flag">
+    
     <div class="describe-box">
       <div
         class="describe-gather"
@@ -22,9 +23,7 @@
       </div>
     </div>
     <!-- 歌曲列表 -->
-    <!-- <div class="u-smtitle">
-        歌曲列表
-    </div> -->
+    <CommentTitle>歌单列表</CommentTitle>
     <!-- 歌曲组件 -->
 
     <ul>

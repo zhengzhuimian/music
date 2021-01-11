@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <div class="loading" v-show="$parent.isShowLoading">
-      <div></div>
+      <!-- <div></div> -->
+      <span class="playing">
+        <i></i>
+        <i></i>
+        <i></i>
+      </span>
     </div>
     <!-- 播放器组件 -->
     <Play
@@ -89,14 +94,36 @@ export default {
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.3);
-  div {
-    width: 34px;
-    height: 34px;
-    background: url("https://s2.music.126.net/style/web2/img/frame/topbar.png?3b29c730f12349abdc07807bac6481c0")
-      no-repeat;
-    animation: loading 2s linear infinite;
-    background-position: 0 -19px;
-  }
+  // div {
+  //   width: 34px;
+  //   height: 34px;
+  //   background: url("https://s2.music.126.net/style/web2/img/frame/topbar.png?3b29c730f12349abdc07807bac6481c0")
+  //     no-repeat;
+  //   animation: loading 2s linear infinite;
+  //   background-position: 0 -19px;
+  // }
+  .playing {
+    width: 35px;
+      display: flex;
+      margin-right: 10px;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 3px;
+      i {
+        width: 8px;
+        height: 29px;
+        background-color: #ffe300;
+        display: inline-block;
+        transform-origin: center bottom;
+        animation: playing 0.6s linear -0.2s infinite alternate-reverse;
+        &:first-of-type {
+          animation-delay: 0s;
+        }
+        &:last-of-type {
+          animation-delay: 0.4s;
+        }
+      }
+}
 }
 @keyframes loading {
   form {
@@ -104,6 +131,14 @@ export default {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+@keyframes playing {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0.2);
   }
 }
 </style>
