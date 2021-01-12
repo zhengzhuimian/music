@@ -70,31 +70,32 @@ export default {};
 <style lang="less">
 .home-nav {
   display: flex;
-  line-height: 34px;
+  line-height: 44px;
   background-color: #ffe300;
   .icon {
-    width: 36px;
+    width: 42px;
+    height: 41px;
     text-align: center;
     vertical-align: middle;
     svg {
       width: 30px;
-      height: 30px;
+      height: 45px;
     }
   }
   .search-icon {
-    width: 36px;
+    width: 42px;
     text-align: center;
-    vertical-align: middle;
+    // vertical-align: middle;
     svg {
-      width: 23px;
+      width: 22px;
     }
   }
   #home {
     display: flex;
     border-bottom: 1px solid #eeeeee;
-    height: 41px;
+    height: 48px;
     flex: 1;
-    padding: 0 50px;
+    padding: 0 30px;
     //  justify-content:space-around
     li {
       flex: 1;
@@ -103,7 +104,7 @@ export default {};
       a {
         text-decoration: none;
         color: black;
-        line-height: 40px;
+        line-height: 47px;
         display: inline-block;
         // padding: 0 15px;
         &.router-link-exact-active {

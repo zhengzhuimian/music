@@ -36,7 +36,7 @@ export default {
         font-size: 14px;
         line-height: 32px;
         color: #282828;
-    border: 1px solid #ffe300;
+    border: 1px solid #ebecec;
 
         border-radius: 32px;
       }

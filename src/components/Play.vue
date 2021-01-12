@@ -294,9 +294,39 @@ export default {
     },
     // 收藏
     collect: function () {
-      // this.collectSong.push(JSON.stringify({id:this.currentMusic.id,name:this.currentMusic.name,picUrl:this.currentMusic.picUrl,al:{name:"111"}}) + "!");
-      this.collectSong.push(JSON.stringify(this.currentMusic) + "!");
-      window.localStorage.setItem("collectSong", this.collectSong);
+      if (window.localStorage.getItem("collectSong")) {
+        var a = window.localStorage.getItem("collectSong");
+        var b = a.split("!,");
+        let vessel = [];
+        if (b.length == 1) {
+          vessel.push(JSON.parse(b[0].slice(1, b[0].length - 1)));
+        } else {
+          b.forEach((item, index) => {
+            if (index == 0) {
+              vessel.push(JSON.parse(item.slice(1)));
+            } else if (index == b.length - 1) {
+              vessel.push(JSON.parse(item.slice(0, item.length - 1)));
+            } else {
+              vessel.push(JSON.parse(item));
+            }
+          });
+        }
+
+        var obj = vessel.some((item) => {
+          return item.id === Number(this.currentMusic.id);
+        });
+
+        if (obj == false) {
+          console.log("添加成功");
+          this.collectSong.push(JSON.stringify(this.currentMusic) + "!");
+          window.localStorage.setItem("collectSong", this.collectSong);
+        } else {
+          console.log("已存在");
+        }
+      } else {
+        this.collectSong.push(JSON.stringify(this.currentMusic) + "!");
+        window.localStorage.setItem("collectSong", this.collectSong);
+      }
     },
   },
 

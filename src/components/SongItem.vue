@@ -6,14 +6,30 @@
       $emit('update:playlist');
     "
   >
-    <div class="info">
+    <div class="info" v-if="item">
       <h5>{{ item.name }}</h5>
       <p>
         <i></i>
-        <span v-for="(artist, index) in item.song.artists" :key="index">
-          <template v-if="index"> / </template>
+        <template v-if="item.song">
+          <span v-for="(artist, index) in item.song.artists" :key="index">
+            <template v-if="index"> / </template>
+            {{ artist.name }}
+          </span>
+        </template>
+        <template v-else-if="item.ar">
+          <span v-for="(artist, index) in item.ar" :key="index">
+            <template v-if="index"> / </template>
+            {{ artist.name }}
+          </span>
+          <!-- &nbsp;-&nbsp;{{ item.al.name }} -->
+        </template>
+        <template v-else-if="item.artists">
+          <span v-for="(artist, index) in item.artists" :key="index">
           {{ artist.name }}
         </span>
+        <!-- &nbsp;-&nbsp;{{ item.album.name }} -->
+        </template>
+
         <!-- <span> {{ itemSong.artists[0].name }}</span> -->
         &nbsp;-&nbsp;{{ item.name }}
       </p>
@@ -37,8 +53,6 @@
 export default {
   props: ["item", "index", "currentMusic", "paused"],
   created() {
-    // console.log("root",this.$root)
-    // console.log("parent",this.$parent)
   },
 };
 </script>

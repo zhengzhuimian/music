@@ -115,12 +115,12 @@ export default {
         background-color: #ffe300;
         display: inline-block;
         transform-origin: center bottom;
-        animation: playing 0.6s linear -0.2s infinite alternate-reverse;
+        animation: playing 0.4s linear -0.2s infinite alternate-reverse;
         &:first-of-type {
           animation-delay: 0s;
         }
         &:last-of-type {
-          animation-delay: 0.4s;
+          animation-delay: 0.2s;
         }
       }
 }

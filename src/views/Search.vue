@@ -95,7 +95,9 @@ export default {
       });
 
     // 历史记录
-    this.history = window.localStorage.getItem("history").split(",");
+    if (window.localStorage.getItem("history")) {
+      this.history = window.localStorage.getItem("history").split(",");
+    }
   },
   methods: {
     SearchResult: function (n) {
@@ -127,13 +129,13 @@ export default {
     },
     HistorySong: function (n) {
       this.text = n;
-       this.axios
-            .get("http://music.kele8.cn/search?keywords=" + n)
-            .then((res) => {
-              // console.log(res.data.result.songs)
-              // console.log(this.Realtime)
-              this.SearchSong = res.data.result.songs.slice(0, 6);
-            });
+      this.axios
+        .get("http://music.kele8.cn/search?keywords=" + n)
+        .then((res) => {
+          // console.log(res.data.result.songs)
+          // console.log(this.Realtime)
+          this.SearchSong = res.data.result.songs.slice(0, 6);
+        });
     },
   },
   // 监听

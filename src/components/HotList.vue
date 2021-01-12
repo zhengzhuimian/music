@@ -14,7 +14,7 @@
       <p>
         <i></i>
         <span v-for="(artist, index) in item.ar" :key="index">
-          <template> / </template>
+          <template v-if="index"> / </template>
           {{ artist.name }}
         </span>
         &nbsp;-&nbsp;{{ item.al.name }}
