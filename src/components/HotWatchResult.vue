@@ -1,6 +1,6 @@
 <template>
   <div class="HotWatchResult">
-    <h2>搜索 "{{ text }}"</h2>
+    <h2  @click="$emit('update:watch-result',text)">搜索 "{{ text }}"</h2>
     <ul>
       <li v-for="(item, index) in Realtime" :key="index" @click="$emit('update:watch-result',item.name)">
         <i></i><span>{{ item.name }}</span>

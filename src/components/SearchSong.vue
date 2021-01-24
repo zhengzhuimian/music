@@ -48,7 +48,7 @@ li.song-item {
   font-size: 12px;
   height: 45px;
   border-bottom: 1px solid #f1f1f2;
-  margin-left: 10px;
+ margin: 5px 0 5px 10px;
 
   h5 {
     font-size: 17px;

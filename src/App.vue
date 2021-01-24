@@ -84,24 +84,16 @@ export default {
   // --animate-delay: 0.9s;
 }
 .loading {
-  width: 100%;
-  height: 100vh;
+  // width: 100%;
+  // height: 100vh;
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 40%;
+  left: 50%;
+  margin-left: -18px;
   z-index: 999;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.3);
-  // div {
-  //   width: 34px;
-  //   height: 34px;
-  //   background: url("https://s2.music.126.net/style/web2/img/frame/topbar.png?3b29c730f12349abdc07807bac6481c0")
-  //     no-repeat;
-  //   animation: loading 2s linear infinite;
-  //   background-position: 0 -19px;
-  // }
   .playing {
     width: 35px;
       display: flex;

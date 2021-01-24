@@ -1,5 +1,12 @@
 <template>
   <div class="search">
+    <div class="loading" v-show="sw">
+      <span class="playing">
+        <i></i>
+        <i></i>
+        <i></i>
+      </span>
+    </div>
     <div class="input">
       <div class="inputcover">
         <i></i>
@@ -28,6 +35,7 @@
         :item="item"
         @update:del="del"
         @update:history-song="HistorySong"
+        @click.native="sw = false"
       ></HistoryRecord>
     </ul>
 
@@ -81,6 +89,8 @@ export default {
       inputing: false,
       // 历史记录
       history: [],
+      // loading开关
+      sw:null
     };
   },
   created() {
@@ -92,6 +102,7 @@ export default {
       })
       .finally(() => {
         this.$root.isShowLoading = false;
+        // this.sw = false
       });
 
     // 历史记录
@@ -105,6 +116,8 @@ export default {
         .get("http://music.kele8.cn/search?keywords=" + n)
         .then((res) => {
           this.SearchSong = res.data.result.songs;
+        }).finally(()=>{
+          this.sw = false
         });
       this.inputing = false;
 
@@ -141,18 +154,24 @@ export default {
   // 监听
   watch: {
     text: function (n) {
+      this.sw = true
       if (n) {
+        
         if (this.inputing) {
           this.axios
             .get("http://music.kele8.cn/search?keywords=" + n)
             .then((res) => {
               // console.log(res.data.result.songs.slice(0,6))
               this.Realtime = res.data.result.songs.slice(0, 6);
+            }).finally(()=>{
+              this.sw = false
+              console.log(this.sw)
             });
         }
       } else {
         this.Realtime = "";
         this.inputing = false;
+        this.sw = false
       }
     },
   },
@@ -163,7 +182,8 @@ export default {
 .search {
   background-color: #fbfcfd;
   height: 100vh;
-
+  // loading
+ 
   .input {
     border-bottom: 1px solid #f2f3f4;
     .inputcover {

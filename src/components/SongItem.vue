@@ -63,8 +63,7 @@ li.song-item {
   font-size: 12px;
   height: 45px;
   border-bottom: 1px solid #f1f1f2;
-  margin-left: 10px;
-
+  margin: 5px 0 5px 10px;
   h5 {
     font-size: 17px;
     white-space: nowrap;
@@ -79,7 +78,10 @@ li.song-item {
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
-      margin-top: 4px;
+      margin-top: 2px;
+      span{
+        font-size: 12px;
+      }
       i {
         background: url("https://s3.music.126.net/mobile-new/img/index_icon_3x.png?49a82fee3e0fc602e9c8b25df2bda159=")
           no-repeat;

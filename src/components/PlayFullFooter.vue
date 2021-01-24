@@ -125,13 +125,13 @@ export default {
   color: white;
   .calculatorLeft {
     position: absolute;
-    top: -54px;
-    left: 6px;
+    top: -53px;
+    left: 7px;
   }
   .calculatorRight {
     position: absolute;
-    top: -54px;
-    right: 6px;
+    top: -53px;
+    right: 7px;
   }
   .progress {
     width: 70%;
@@ -165,7 +165,7 @@ export default {
   // 底下箭头部分
   .arrows {
     width: 100%;
-    margin: 0 auto;
+    margin-bottom: 10px;
     display: flex;
     text-align: center;
     .schema {

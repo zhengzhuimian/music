@@ -1,5 +1,5 @@
 <template>
-  <div class="PlayList" v-if="flag">
+  <div class="PlayList" :class="{'bottom-padding' : wonderful}" v-if="flag">
     
     <div class="describe-box">
       <div
@@ -41,7 +41,7 @@
     <!-- <div class="OpenApp">打开APP，发现更多好音乐 ></div> -->
 
     <!-- 精彩评论 -->
-    <div>
+    <div v-if="wonderful">
       <CommentTitle>精彩评论</CommentTitle>
       <ul>
         <Comment
@@ -134,6 +134,8 @@ export default {
 </script>
 <style lang="less" scoped>
 .PlayList {
+  // 填充
+ 
   .describe-box {
     height: 206px;
     width: 100%;
@@ -228,4 +230,7 @@ export default {
     text-align: center;
   }
 }
+ .bottom-padding{
+    margin-bottom: 48px;
+  }
 </style>
