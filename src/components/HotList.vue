@@ -38,11 +38,6 @@
 <script>
 export default {
   props: ["item", "index","currentMusic", "paused"],
-  created() {
-    
-    // console.log("parent",this.$parent)
-
-  },
 };
 </script>
 

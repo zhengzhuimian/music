@@ -29,32 +29,8 @@ export default {
     };
   },
   activated() {
-    this.collectSong = [];
-    if (window.localStorage.getItem("collectSong")) {
-      var a = window.localStorage.getItem("collectSong");
-
-      var b = a.split("!,");
-
-      if (b.length == 1) {
-        this.collectSong.push(JSON.parse(b[0].slice(1, b[0].length - 1)));
-      } else {
-        b.forEach((item, index) => {
-          if (index == 0) {
-            this.collectSong.push(JSON.parse(item.slice(1)));
-          } else if (index == b.length - 1) {
-            this.collectSong.push(JSON.parse(item.slice(0, item.length - 1)));
-          } else {
-            this.collectSong.push(JSON.parse(item));
-          }
-        });
-      }
-    }
-
-    // var obj = this.collectSong.some((item) => {
-    //   // console.log(item.id);
-    //   return item.id === Number("1810021934");
-    // });
-    // console.log(obj);
+    // 获取收藏的歌曲
+    this.collectSong = JSON.parse(window.localStorage.getItem("collectSong"))
   },
 };
 </script>

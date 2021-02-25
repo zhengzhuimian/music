@@ -62,7 +62,7 @@ export default {
   margin: 0 auto;
   margin-top: 36px;
   position: relative;
-  animation: rotation 8s linear infinite;
+  animation: rotation 12s linear infinite;
 
   .m-song-rollwrap {
     width: 212px;

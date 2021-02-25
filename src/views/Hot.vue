@@ -76,6 +76,7 @@ export default {
     this.current = "更新日期:" + getMonth + "月" + getDate + "日";
   },
   methods: {
+    // 加载更多歌曲
     view: function () {
       this.examine = false;
       this.num++;

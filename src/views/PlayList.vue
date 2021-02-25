@@ -134,8 +134,6 @@ export default {
 </script>
 <style lang="less" scoped>
 .PlayList {
-  // 填充
- 
   .describe-box {
     height: 206px;
     width: 100%;

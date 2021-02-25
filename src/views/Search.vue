@@ -165,7 +165,6 @@ export default {
               this.Realtime = res.data.result.songs.slice(0, 6);
             }).finally(()=>{
               this.sw = false
-              console.log(this.sw)
             });
         }
       } else {

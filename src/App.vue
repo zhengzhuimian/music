@@ -22,9 +22,6 @@
 
     <HomeNav v-if="$route.meta.isShowNav" />
 
-    <!-- <router-view @translate-music="currentMisic = $event" 
-    :currentMisic="currentMisic"/> -->
-
     <!-- keep-alive会缓存，不会再次触发 -->
     <keep-alive>
       <router-view
@@ -60,16 +57,7 @@ export default {
   components: {
     HomeNav,
     Play,
-  },
-
-  // created() {
-  //   console.log(this.$parent);
-  // },
-  // watch: {
-  //   "$parent.msg": function (n) {
-  //     console.log(n);
-  //   },
-  // },
+  }
 };
 </script>
 <style lang="less">

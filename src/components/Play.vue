@@ -38,25 +38,81 @@
         </div>
         <div class="collect" @click.stop="collect">
           <svg
-            t="1610335276459"
+            v-if="love"
+            t="1614245799972"
             class="icon"
-            viewBox="0 0 1139 1024"
+            viewBox="0 0 1024 1024"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
-            p-id="1980"
-            width="32"
-            height="32"
+            p-id="1518"
+            width="22"
+            height="22"
           >
             <path
-              d="M889.018182 193.163636c-41.890909-46.545455-97.745455-69.818182-162.909091-69.818181-48.872727 0-97.745455 16.290909-144.290909 46.545454-11.636364 6.981818-13.963636 20.945455-6.981818 32.581818 6.981818 11.636364 20.945455 13.963636 32.581818 6.981818 37.236364-25.6 76.8-39.563636 118.690909-39.563636 51.2 0 95.418182 18.618182 128 55.854546 39.563636 44.218182 58.181818 109.381818 51.2 179.2-9.309091 104.727273-74.472727 302.545455-393.309091 446.836363C193.163636 707.490909 128 509.672727 118.690909 404.945455c-6.981818-69.818182 11.636364-134.981818 51.2-179.2 32.581818-34.909091 76.8-55.854545 128-55.854546 116.363636 0 195.490909 114.036364 195.490909 116.363636 6.981818 11.636364 20.945455 13.963636 32.581818 6.981819 11.636364-6.981818 13.963636-20.945455 6.981819-32.581819-4.654545-4.654545-93.090909-137.309091-235.054546-137.30909-65.163636 0-121.018182 23.272727-162.909091 69.818181-48.872727 53.527273-72.145455 132.654545-62.836363 214.109091 11.636364 116.363636 81.454545 335.127273 430.545454 488.727273 2.327273 2.327273 6.981818 2.327273 9.309091 2.327273 4.654545 0 6.981818 0 9.309091-2.327273 349.090909-153.6 418.909091-372.363636 430.545454-488.727273 9.309091-81.454545-13.963636-160.581818-62.836363-214.109091z"
-              fill="#707070"
-              p-id="1981"
+              d="M667.786667 117.333333C832.864 117.333333 938.666667 249.706667 938.666667 427.861333c0 138.250667-125.098667 290.506667-371.573334 461.589334a96.768 96.768 0 0 1-110.186666 0C210.432 718.368 85.333333 566.112 85.333333 427.861333 85.333333 249.706667 191.136 117.333333 356.213333 117.333333c59.616 0 100.053333 20.832 155.786667 68.096C567.744 138.176 608.170667 117.333333 667.786667 117.333333z"
+              p-id="1519"
+              fill="#d81e06"
+            ></path>
+          </svg>
+          <svg
+            v-else
+            t="1614245799972"
+            class="icon"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            p-id="1518"
+            width="22"
+            height="22"
+          >
+            <path
+              d="M667.786667 117.333333C832.864 117.333333 938.666667 249.706667 938.666667 427.861333c0 138.250667-125.098667 290.506667-371.573334 461.589334a96.768 96.768 0 0 1-110.186666 0C210.432 718.368 85.333333 566.112 85.333333 427.861333 85.333333 249.706667 191.136 117.333333 356.213333 117.333333c59.616 0 100.053333 20.832 155.786667 68.096C567.744 138.176 608.170667 117.333333 667.786667 117.333333z"
+              p-id="1519"
+              fill="#bfbfbf"
             ></path>
           </svg>
         </div>
         <div class="control" @click.stop="togglePlayState">
           <canvas ref="circle" width="40" height="40"></canvas>
-          <span class="icon"></span>
+          <span class="icon">
+            <!-- 暂停播放按钮 -->
+            <div v-if="!paused">
+              <svg
+                t="1614253531604"
+                class="icon"
+                viewBox="0 0 1024 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                p-id="1519"
+                width="18"
+                height="18"
+              >
+                <path
+                  d="M288 128C270.336 128 256 142.336 256 160l0 768C256 945.664 270.336 960 288 960S320 945.664 320 928l0-768C320 142.336 305.664 128 288 128zM672 128C654.336 128 640 142.336 640 160l0 768c0 17.664 14.336 32 32 32s32-14.336 32-32l0-768C704 142.336 689.664 128 672 128z"
+                  p-id="1520"
+                ></path>
+              </svg>
+            </div>
+            <div v-else>
+              <svg
+                style="margin-left='5px'"
+                t="1614254563022"
+                class="icon"
+                viewBox="0 0 1024 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                p-id="5485"
+                width="18"
+                height="18"
+              >
+                <path
+                  d="M254.12312913 207.53109189l477.18225737 301.8168285-477.18225737 301.59550816V207.53109189M209.65161982 95.67463759c-5.17647289 0-10.33875811 1.29104431-15.06880352 3.8750249-9.81571995 5.44413934-16.12528442 15.83208016-16.12528534 27.30582275V891.80725251c0 11.16635065 6.16201725 21.62806553 16.12528534 27.21786194 4.72437036 2.5820886 9.81571995 3.72653032 14.9657095 3.72653031 5.8839462 0 11.60615658-1.43764597 16.77127934-4.72437035L831.07426079 535.8006137c9.02406799-5.7373436 14.4672627-15.69966617 14.46726179-26.44039763 0-10.74073147-5.44413934-20.84965569-14.46726177-26.44039669L226.32075158 100.41508761c-5.19444363-3.15998453-10.94029985-4.74045003-16.66913176-4.74045002z"
+                  p-id="5486"
+                  fill="#8a8a8a"
+                ></path>
+              </svg>
+            </div>
+          </span>
         </div>
       </div>
     </transition>
@@ -140,10 +196,8 @@ export default {
       schema: 1,
       // 收藏
       collectSong: [],
+      love: false,
     };
-  },
-  created() {
-    this.collectSong.push(window.localStorage.getItem("collectSong"));
   },
   mounted() {
     this.$refs.audio.addEventListener("pause", () => {
@@ -196,7 +250,9 @@ export default {
       ctx.closePath();
     },
 
+    // 播放暂停
     togglePlayState: function () {
+      console.log(this.paused);
       if (this.paused) {
         this.$refs.audio.play();
       } else {
@@ -212,6 +268,7 @@ export default {
         return ramdon;
       }
     },
+
     // 下一首播放
     calculateNext: function () {
       // 设置歌曲的播放模式
@@ -247,6 +304,7 @@ export default {
         index: ni,
       });
     },
+
     // 上一首
     lastIndex: function () {
       let pre;
@@ -294,38 +352,31 @@ export default {
     },
     // 收藏
     collect: function () {
-      if (window.localStorage.getItem("collectSong")) {
-        var a = window.localStorage.getItem("collectSong");
-        var b = a.split("!,");
-        let vessel = [];
-        if (b.length == 1) {
-          vessel.push(JSON.parse(b[0].slice(1, b[0].length - 1)));
-        } else {
-          b.forEach((item, index) => {
-            if (index == 0) {
-              vessel.push(JSON.parse(item.slice(1)));
-            } else if (index == b.length - 1) {
-              vessel.push(JSON.parse(item.slice(0, item.length - 1)));
-            } else {
-              vessel.push(JSON.parse(item));
-            }
-          });
-        }
-
-        var obj = vessel.some((item) => {
-          return item.id === Number(this.currentMusic.id);
-        });
-
-        if (obj == false) {
-          console.log("添加成功");
-          this.collectSong.push(JSON.stringify(this.currentMusic) + "!");
-          window.localStorage.setItem("collectSong", this.collectSong);
-        } else {
-          console.log("已存在");
-        }
+      this.love = !this.love;
+      if (this.love) {
+        // 添加到本地内存
+        this.collectSong.push(this.currentMusic);
+        window.localStorage.setItem(
+          "collectSong",
+          JSON.stringify(this.collectSong)
+        );
       } else {
-        this.collectSong.push(JSON.stringify(this.currentMusic) + "!");
-        window.localStorage.setItem("collectSong", this.collectSong);
+        // 获取本地收藏的歌曲
+        this.collectSong = JSON.parse(
+          window.localStorage.getItem("collectSong")
+        );
+        // 遍历收藏的数据
+        this.collectSong.forEach((item, index) => {
+          // 找到对应下标删除收藏的某一首歌曲
+          if (item.id == this.currentMusic.id) {
+            this.collectSong.splice(index, 1);
+          }
+        });
+        // 上传到本地内存
+        window.localStorage.setItem(
+          "collectSong",
+          JSON.stringify(this.collectSong)
+        );
       }
     },
   },
@@ -334,13 +385,29 @@ export default {
     paused: function (n) {
       this.$emit("update:paused", n);
     },
+
+    // 请求歌词和判断爱心高亮
     currentMusic: function (n) {
-      // 请求歌词
       this.axios.get("http://music.kele8.cn/lyric?id=" + n.id).then((res) => {
         if (res.data.lrc) {
           this.lyric = this.paresLyric(res.data.lrc.lyric);
         }
       });
+      // 初始化爱心状态
+      this.love = false;
+      // 获取收藏的数据
+      let collectSongData = JSON.parse(
+        window.localStorage.getItem("collectSong")
+      );
+      // 判断是否收藏过
+      let bool = collectSongData.some((item) => {
+        return item.id === this.currentMusic.id;
+      });
+
+      // 如果收藏就让爱心高亮
+      if (bool) {
+        this.love = true;
+      }
     },
   },
 };
@@ -352,13 +419,6 @@ export default {
     .play-bar {
       img {
         animation-play-state: paused;
-      }
-      .control {
-        span.icon {
-          &::before {
-            content: "播放";
-          }
-        }
       }
     }
   }
@@ -396,11 +456,7 @@ export default {
       top: 0;
       left: 0;
       text-align: center;
-      line-height: 35px;
-      &::before {
-        content: "暂停";
-        font-size: 12px;
-      }
+      line-height: 45px;
     }
   }
   .collect {
