@@ -1,5 +1,5 @@
 <template>
-  <div class="PlayList" :class="{'bottom-padding' : wonderful}" v-if="flag">
+  <div class="PlayList" :class="{'bottom-padding' : currentMusic}" v-if="flag">
     
     <div class="describe-box">
       <div
@@ -41,7 +41,7 @@
     <!-- <div class="OpenApp">打开APP，发现更多好音乐 ></div> -->
 
     <!-- 精彩评论 -->
-    <div v-if="wonderful">
+    <div v-if="wonderful.length > 1">
       <CommentTitle>精彩评论</CommentTitle>
       <ul>
         <Comment
@@ -166,8 +166,8 @@ export default {
       top: 32px;
       left: 20px;
       .describeImg {
-        width: 145px;
-        height: 145px;
+        width: 132px;
+        height: 138px;
 
         img {
           width: 100%;
@@ -193,6 +193,7 @@ export default {
         font-size: 17px;
         color: white;
         margin-left: 16px;
+        flex: 1;
         p {
           height: 44px;
         }

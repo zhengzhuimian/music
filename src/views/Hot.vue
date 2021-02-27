@@ -131,10 +131,10 @@ export default {
   }
   .OpenApp {
     line-height: 38px;
-    border: 1px solid #d33a31;
+    border: 1px solid #ffe300;
     border-radius: 38px;
     font-size: 16px;
-    color: #d33a31;
+    color: black;
     margin: 15px 37px 5px;
     text-align: center;
   }

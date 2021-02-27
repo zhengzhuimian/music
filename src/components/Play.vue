@@ -37,6 +37,7 @@
           <span v-else>{{ currentMusic.name }}</span>
         </div>
         <div class="collect" @click.stop="collect">
+          <!-- 收藏 -->
           <svg
             v-if="love"
             t="1614245799972"
@@ -45,8 +46,8 @@
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
             p-id="1518"
-            width="22"
-            height="22"
+            width="18"
+            height="18"
           >
             <path
               d="M667.786667 117.333333C832.864 117.333333 938.666667 249.706667 938.666667 427.861333c0 138.250667-125.098667 290.506667-371.573334 461.589334a96.768 96.768 0 0 1-110.186666 0C210.432 718.368 85.333333 566.112 85.333333 427.861333 85.333333 249.706667 191.136 117.333333 356.213333 117.333333c59.616 0 100.053333 20.832 155.786667 68.096C567.744 138.176 608.170667 117.333333 667.786667 117.333333z"
@@ -62,8 +63,8 @@
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
             p-id="1518"
-            width="22"
-            height="22"
+            width="18"
+            height="18"
           >
             <path
               d="M667.786667 117.333333C832.864 117.333333 938.666667 249.706667 938.666667 427.861333c0 138.250667-125.098667 290.506667-371.573334 461.589334a96.768 96.768 0 0 1-110.186666 0C210.432 718.368 85.333333 566.112 85.333333 427.861333 85.333333 249.706667 191.136 117.333333 356.213333 117.333333c59.616 0 100.053333 20.832 155.786667 68.096C567.744 138.176 608.170667 117.333333 667.786667 117.333333z"
@@ -155,6 +156,7 @@
           v-bind:currentTime="currentTime"
           v-bind:duration="duration"
           :paused="paused"
+          :currentMusic="currentMusic"
           @update:currentTime="$refs.audio.currentTime = $event"
           @toggle-icon="togglePlayState"
           @update:next-song="playNext"
@@ -196,6 +198,7 @@ export default {
       schema: 1,
       // 收藏
       collectSong: [],
+      // 爱心高亮
       love: false,
     };
   },
@@ -252,7 +255,6 @@ export default {
 
     // 播放暂停
     togglePlayState: function () {
-      console.log(this.paused);
       if (this.paused) {
         this.$refs.audio.play();
       } else {
@@ -269,7 +271,7 @@ export default {
       }
     },
 
-    // 下一首播放
+    // 点击下一首
     calculateNext: function () {
       // 设置歌曲的播放模式
       let nextIndex;
@@ -292,19 +294,22 @@ export default {
       } else if (this.schema == 3) {
         // console.log(this.currentIndex)
         nextIndex = this.currentIndex;
+        // 将歌曲进度设置为0，才能执行
         this.$refs.audio.currentTime = 0;
         return nextIndex;
       }
     },
+    // 要播放的下一首
     playNext: function () {
+      // 调用播放，解决单曲循环停止歌曲
+      this.$refs.audio.play();
       let ni = this.calculateNext();
-
+      
       this.$emit("update:music", {
         item: this.playlist[ni],
         index: ni,
       });
     },
-
     // 上一首
     lastIndex: function () {
       let pre;

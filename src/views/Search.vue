@@ -59,7 +59,7 @@
         @update:music="$emit('update:music', $event)"
         @update:playlist="$emit('update:playlist', SearchSong)"
       ></SearchSong>
-      <div class="OpenApp">打开APP，发现更多好音乐 ></div>
+      <!-- <div class="OpenApp">打开APP，发现更多好音乐 ></div> -->
     </template>
   </div>
 </template>

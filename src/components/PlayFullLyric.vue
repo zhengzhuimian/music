@@ -16,11 +16,10 @@ export default {
     props:["lyric","currentTime"],
     watch:{
         currentTime:function(){
-    
+            // 当前时间去遍历歌曲在哪个下标里面
              let i = this.lyric.findIndex((element) => {
                 return element.time > this.currentTime
             })
-           
             let lyricLi = document.querySelectorAll(".lyric li")
              if (i != -1) {
                  
@@ -42,7 +41,7 @@ export default {
 <style scoped lang="less">
 .lyric-box{ 
     width:80%;
-    height: 65vh;
+    height: 60vh;
     margin: 0 auto;
     text-align: center;
     overflow: hidden;
