@@ -39,6 +39,12 @@ const routes = [{
         component: Collect,
         meta: { isShowNav: true }
     },
+    {
+        path: '/songlist',
+        name: 'Songlist',
+        component: () =>
+            import ('../views/Songlist.vue'),
+    },
 ]
 
 const router = new VueRouter({
