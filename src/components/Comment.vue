@@ -65,8 +65,8 @@ export default {
 <style lang="less" scoped>
 .Comment {
   display: flex;
-  padding-top: 10px;
-
+  padding-top: 14px;
+  
   .portrait {
     margin: 0 10px;
     height: 30px;
@@ -81,6 +81,7 @@ export default {
   }
   .wrap {
     flex: auto;
+    padding-bottom: 6px;
     border-bottom: 1px solid #f1f1f1;
     .header {
       display: flex;

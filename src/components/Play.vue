@@ -163,6 +163,8 @@
           @update:last-song="lastIndex"
           :schema="schema"
           @update:schema="schema = $event"
+          :love="love"
+          @update:love="collect"
         />
       </div>
     </transition>
@@ -400,6 +402,7 @@ export default {
       });
       // 初始化爱心状态
       this.love = false;
+      if(window.localStorage.getItem("collectSong")){
       // 获取收藏的数据
       let collectSongData = JSON.parse(
         window.localStorage.getItem("collectSong")
@@ -412,6 +415,7 @@ export default {
       // 如果收藏就让爱心高亮
       if (bool) {
         this.love = true;
+      }
       }
     },
   },
@@ -444,7 +448,7 @@ export default {
     height: 40px;
     margin: 4px;
     border-radius: 50%;
-    animation: playing 5s linear infinite;
+    animation: playing 8s linear infinite;
   }
   .title {
     flex: 1;

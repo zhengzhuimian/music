@@ -47,7 +47,7 @@ export default {
 li.song-item {
   display: flex;
   font-size: 12px;
-  height: 45px;
+  height: 47px;
   border-bottom: 1px solid #f1f1f2;
    margin: 5px 0 5px 10px;
   .serial {

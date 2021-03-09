@@ -77,9 +77,10 @@
         :value="currentTime"
       />
       <span :style="{ width: (currentTime / duration) * 100 + '%' }"></span>
-    </div>
-    <div class="calculatorLeft" v-if="present">{{ present }}</div>
+       <div class="calculatorLeft" v-if="present">{{ present }}</div>
     <div class="calculatorRight" v-if="present">{{ total }}</div>
+    </div>
+   
     <div class="arrows">
       <!-- 模式按钮 -->
       <div class="schema">
@@ -136,7 +137,7 @@
 
 <script>
 export default {
-  props: ["currentTime", "duration", "paused", "schema", "currentMusic"],
+  props: ["currentTime", "duration", "paused", "schema", "currentMusic","love"],
   data: function () {
     return {
       // 歌曲的总时长
@@ -144,7 +145,7 @@ export default {
       // 当前歌曲时间
       present: "00:00:00",
       // 爱心高亮
-      love: false,
+      // love: false,
       // 收藏歌曲
       collectSong: [],
     };
@@ -171,32 +172,7 @@ export default {
     },
     // 收藏
     collect: function () {
-      this.love = !this.love;
-      if (this.love) {
-        // 添加到本地内存
-        this.collectSong.push(this.currentMusic);
-        window.localStorage.setItem(
-          "collectSong",
-          JSON.stringify(this.collectSong)
-        );
-      } else {
-        // 获取本地收藏的歌曲
-        this.collectSong = JSON.parse(
-          window.localStorage.getItem("collectSong")
-        );
-        // 遍历收藏的数据
-        this.collectSong.forEach((item, index) => {
-          // 找到对应下标删除收藏的某一首歌曲
-          if (item.id == this.currentMusic.id) {
-            this.collectSong.splice(index, 1);
-          }
-        });
-        // 上传到本地内存
-        window.localStorage.setItem(
-          "collectSong",
-          JSON.stringify(this.collectSong)
-        );
-      }
+      this.$emit("update:love")
     },
   },
   created() {
@@ -230,23 +206,7 @@ export default {
           ? "0" + parseInt(minuteTime / 60)
           : parseInt(minuteTime / 60);
       this.total = hourTime + ":" + minuteTime + ":" + secondTime;
-    },
-    currentMusic: function () {
-      this.love = false;
-      // 获取收藏的数据
-      let collectSongData = JSON.parse(
-        window.localStorage.getItem("collectSong")
-      );
-      // 判断是否收藏过
-      let bool = collectSongData.some((item) => {
-        return item.id === this.currentMusic.id;
-      });
-
-      // 如果收藏就让爱心高亮
-      if (bool) {
-        this.love = true;
-      }
-    },
+    }
   },
 };
 </script>
@@ -272,18 +232,19 @@ export default {
   }
   .calculatorLeft {
     position: absolute;
-    top: -27px;
-    left: 7px;
+    top: -4px;
+    left: -50px;
+    
   }
   .calculatorRight {
     position: absolute;
-    top: -27px;
-    right: 7px;
+    top: -4px;
+    right: -50px;
   }
   .progress {
     width: 70%;
     height: 6px;
-    background: linear-gradient(to right, lightblue, lightcoral);
+    background: linear-gradient(to right, lightblue, lightblue);
     position: relative;
     top: -50px;
     left: 0;
@@ -306,7 +267,7 @@ export default {
       height: 100%;
       background: black;
       border-radius: 3px;
-      background: #d8cc6b;
+      background: #1d82fe;
     }
   }
   // 底下箭头部分

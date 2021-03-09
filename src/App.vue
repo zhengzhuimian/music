@@ -71,11 +71,12 @@ export default {
   --animate-duration: 600ms;
   // --animate-delay: 0.9s;
 }
+body{
+  background-color:#fbfcfd
+}
 .loading {
-  // width: 100%;
-  // height: 100vh;
   position: fixed;
-  top: 40%;
+  top: 45%;
   left: 50%;
   margin-left: -18px;
   z-index: 999;
@@ -92,7 +93,7 @@ export default {
       i {
         width: 8px;
         height: 29px;
-        background-color: #ffe300;
+        background-color: #1d82fe;
         display: inline-block;
         transform-origin: center bottom;
         animation: playing 0.4s linear -0.2s infinite alternate-reverse;

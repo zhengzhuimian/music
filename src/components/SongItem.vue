@@ -61,7 +61,7 @@ export default {
 li.song-item {
   display: flex;
   font-size: 12px;
-  height: 45px;
+  height: 47px;
   border-bottom: 1px solid #f1f1f2;
   margin: 5px 0 5px 10px;
   h5 {
@@ -107,7 +107,7 @@ li.song-item {
       i {
         width: 5px;
         height: 29px;
-        background-color: #ffe300;
+        background-color: #1d82fe;
         display: inline-block;
         transform-origin: center bottom;
         animation: playing 0.6s linear -0.2s infinite alternate-reverse;

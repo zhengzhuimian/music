@@ -39,7 +39,7 @@ export default {
 <style scoped lang="less">
 li.playlistitem {
   width: 33%;
-  // height: 174px;
+  height: 182px;
   .thumb {
     position: relative;
     img {
