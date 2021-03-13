@@ -39,11 +39,10 @@ export default {
 <style scoped lang="less">
 li.playlistitem {
   width: 33%;
-  height: 182px;
+  margin-bottom: 6px;
   .thumb {
     position: relative;
     img {
-  
       vertical-align: middle;
     }
     span {
